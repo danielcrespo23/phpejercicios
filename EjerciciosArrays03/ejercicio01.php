@@ -1,5 +1,4 @@
 <?php
-// Función para obtener el valor máximo
 function obtenerMaximo($array) {
     return max($array);
 }
