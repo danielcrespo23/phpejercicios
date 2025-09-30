@@ -6,6 +6,12 @@ $periodicos = array(
     "La Vanguardia" => "https://www.lavanguardia.com",
     "El Periódico" => "https://www.elperiodico.com"
 );
+
+echo "<ul>";
+foreach ($periodicos as $nombre => $url) {
+    echo "<li><a href='$url' target='_blank'>$nombre</a></li>";
+}
+echo "</ul>";
 ?>
 <!DOCTYPE html>
 <html lang="es">
