@@ -8,9 +8,18 @@ $periodicos = array(
     "El MundoToday" => "https://www.elmundotoday.com"
 );
 
-// Elegir clave aleatoria
-$claveAleatoria = array_rand($periodicos); // 👈 esta es la clave (nombre del periódico)
-
-// Usamos la clave directamente
-echo "<p>Medio seleccionado al azar: <a href='{$periodicos[$claveAleatoria]}' target='_blank'>$claveAleatoria</a></p>";
+$claveAleatoria = array_rand($periodicos);
+$medio = $claveAleatoria;
+$url = $periodicos[$medio];
 ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Medio al azar</title>
+</head>
+<body>
+    <h2>Medio seleccionado al azar</h2>
+    <p><a href="<?= $url ?>" target="_blank"><?= $medio ?></a></p>
+</body>
+</html>

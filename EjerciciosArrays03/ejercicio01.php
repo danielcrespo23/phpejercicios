@@ -14,9 +14,7 @@ function obtenerMasRepetido($array) {
     $frecuencias = array_count_values($array);
     $maxRepeticiones = max($frecuencias);
     $masRepetidos = array_keys($frecuencias, $maxRepeticiones);
-
-    // Si hay más de uno, devolvemos el primero
-    return $masRepetidos[0];
+    return $masRepetidos[0]; // devolvemos el primero si hay empate
 }
 
 // Crear array con 20 números aleatorios entre 1 y 10
@@ -25,15 +23,30 @@ for ($i = 0; $i < 20; $i++) {
     $array[] = rand(1, 10);
 }
 
-// Mostrar array en tabla de una fila
-echo "<table border='1' cellpadding='5'><tr>";
-foreach ($array as $num) {
-    echo "<td>$num</td>";
-}
-echo "</tr></table><br>";
-
-// Mostrar resultados
-echo "Valor máximo: " . obtenerMaximo($array) . "<br>";
-echo "Valor mínimo: " . obtenerMinimo($array) . "<br>";
-echo "Valor más repetido: " . obtenerMasRepetido($array);
+// Calcular resultados
+$maximo = obtenerMaximo($array);
+$minimo = obtenerMinimo($array);
+$masRepetido = obtenerMasRepetido($array);
 ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Array de números aleatorios</title>
+</head>
+<body>
+    <h2>Tabla con 20 números aleatorios</h2>
+    <table border="1" cellpadding="5">
+        <tr>
+            <?php foreach ($array as $num): ?>
+                <td><?= $num ?></td>
+            <?php endforeach; ?>
+        </tr>
+    </table>
+
+    <h3>Resultados</h3>
+    <p>Valor máximo: <?= $maximo ?></p>
+    <p>Valor mínimo: <?= $minimo ?></p>
+    <p>Valor más repetido: <?= $masRepetido ?></p>
+</body>
+</html>
