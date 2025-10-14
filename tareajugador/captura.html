@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="default.css">
+    <title>Captura de Jugador</title>
+    <script>
+        function validarFormulario() {
+            const nombre = document.getElementById("nombre").value.trim();
+            const alias = document.getElementById("alias").value.trim();
+            const imagen = document.getElementById("imagen").files[0];
+
+            const regex = /^[a-zA-Z0-9\sáéíóúÁÉÍÓÚñÑ]+$/;
+
+            if (!regex.test(nombre) || !regex.test(alias)) {
+                alert("❌ Nombre y alias solo pueden contener letras, números y espacios.");
+                return false;
+            }
+
+            if (imagen) {
+                if (imagen.type !== "image/png") {
+                    alert("❌ Solo se permiten imágenes PNG.");
+                    return false;
+                }
+                if (imagen.size > 10240) { // 10 KB
+                    alert("❌ La imagen no puede superar los 10 KB.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Datos del Jugador</h2>
+    <form action="index.php" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario()">
+        <label>Nombre:</label>
+        <input type="text" name="nombre" id="nombre" required><br><br>
+
+        <label>Alias:</label>
+        <input type="text" name="alias" id="alias" required><br><br>
+
+        <label>Edad:</label>
+        <input type="number" name="edad" min="1" required><br><br>
+
+        <label>Armas (elige una o varias):</label><br>
+        <input type="checkbox" name="armas[]" value="Maza"> Maza<br>
+        <input type="checkbox" name="armas[]" value="Antorcha"> Antorcha<br>
+        <input type="checkbox" name="armas[]" value="Martillo"> Martillo<br>
+        <input type="checkbox" name="armas[]" value="Látigo"> Látigo<br><br>
+
+        <label>¿Practica artes mágicas?</label><br>
+        <input type="radio" name="magia" value="Sí" required> Sí<br>
+        <input type="radio" name="magia" value="No" required> No<br><br>
+
+        <label>Subir imagen (PNG máx. 10KB):</label>
+        <input type="file" name="imagen" id="imagen" accept="image/png"><br><br>
+
+        <input type="submit" value="Enviar datos">
+    </form>
+</body>
+</html>
