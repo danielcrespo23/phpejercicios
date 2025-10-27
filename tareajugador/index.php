@@ -15,10 +15,6 @@ $edad = intval($_POST['edad']);
 $armas = isset($_POST['armas']) ? $_POST['armas'] : [];
 $magia = $_POST['magia'] ?? "No";
 
-// Procesamiento de imagen
-$directorio = "uploads/";
-$calavera = "https://upload.wikimedia.org/wikipedia/commons/5/59/Skull_icon.png";
-$mensajeError = "";
 
 if (!is_dir($directorio)) mkdir($directorio, 0777, true);
 
