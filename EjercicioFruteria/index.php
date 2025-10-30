@@ -10,7 +10,7 @@ session_start();
 
 // Nuevo cliente: anoto en la sesión su nombre y creo su tabla de pedidos vacía
 if (isset($_GET['cliente']) && !isset($_SESSION['cliente']) ) {
-    $_SESSION['cliente'] = $_GET['cliente'];
+    $_SESSION ['cliente'] = $_GET['cliente'];
     $_SESSION['pedidos'] = [];
 }
 
@@ -44,7 +44,7 @@ if (isset($_POST["accion"])) {
             require_once 'despedida.php';
             session_destroy();
             exit();
-            break;
+           
           
     }
 }
